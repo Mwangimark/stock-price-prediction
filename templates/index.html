@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+        .container {
+            max-width: 600px; /* Limit the width */
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        #results {
+            margin-top: 30px;
+        }
+        .result-label {
+            font-weight: bold;
+        }
+        .footer{
+            padding: 10px;
+            background-color: rgb(20, 15, 15);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Stock Price Prediction</h2>
+        
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="symbol">Select Stock Symbol:</label>
+                <select name="symbol" id="symbol" class="form-control" required>
+                    <option value="AAPL">Apple (AAPL)</option>
+                    <option value="GOOG">Google (GOOG)</option>
+                    <option value="AMZN">Amazon (AMZN)</option>
+                    <option value="MSFT">Microsoft (MSFT)</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Prediction</button>
+        </form>
+        
+        <hr>
+        
+        <!-- Display Results -->
+        {% if symbol %}
+            <h4 class="text-center">Results for {{ symbol }}:</h4>
+            <div id="results">
+                <p><span class="result-label">Today's Date:</span> {{ today_date }}</p>
+                <p><span class="result-label">Today's Price:</span> {{ todays_price }}</p>
+                <p><span class="result-label">Predicted Price for Tomorrow:</span> ${{ predicted_price }}</p>
+            </div>
+        {% endif %}
+
+        <div class="footer">
+            <h6>Copyright @2025 LSTM</h6>
+            <h5>publication@ :Mark C Mwangi </h5>
+        </div>
+    </div>
+
+    
+</body>
+</html>
